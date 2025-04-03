@@ -15,7 +15,17 @@ mkdir build && cd build/
 module purge
 
 # Load required modules for compiling LAMMPS
-module load cmake/3.15.4 mpi/openmpi-4.1.1-gcc.10.2.0 gcc/11.2.0 hdf5/1.10.8-openmpi-3.1.3-gcc-8.4.0 
+# module load cmake/3.15.4 mpi/openmpi-4.1.1-gcc.10.2.0 gcc/11.2.0 hdf5/1.10.8-openmpi-3.1.3-gcc-8.4.0 
+module purge
+module load gcc/10.4.0-gcc-4.8.5
+module load hdf5/1.10.7-openmpi-intel-2021.4.0
+module load git/2.37.2
+module load intel-oneapi-mkl/2023.1.0-intel-2021.4.0
+module load mpi/openmpi-4.1.6rc2-intel-2021.4.0
+module load cmake/3.26.3-intel-2021.4.0
+module load intel-oneapi-compilers/2021.4.0-gcc-10.4.0
+module load ffmpeg/4.2.2-intel-19.0.5.281
+module load fftw/3.3.4-openmpi-4.0.5-intel-19.0.5.281
 
 # Run CMake to configure the LAMMPS build  
     # Edit package options below as needed to include/exclude specific features
@@ -35,7 +45,12 @@ cmake -D PKG_DPD-BASIC=yes \
       -D PKG_USER-MISC=yes \
       -D DOWNLOAD_EIGEN3=yes \
       -D PKG_MANYBODY=yes \
+      -D PKG_INTEL=yes
       -D PKG_USER-COLVARS=yes \
+      -DCMAKE_C_COMPILER=gcc \
+      -DCMAKE_CXX_COMPILER=g++ \
+      -DCMAKE_Fortran_COMPILER=gfortran \
+      -D FFT=MKL
       ../cmake  # Specify the source directory for CMake configuration
 
 # Compile and install LAMMPS using 4 parallel threads
