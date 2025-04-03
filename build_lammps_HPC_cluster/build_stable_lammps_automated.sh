@@ -1,6 +1,6 @@
 #!/bin/bash
 # Written by Arman Moussavi
-# Last updated: 04-01-2025
+# Last updated: 04-03-2025
 
 # Clone the stable branch of the LAMMPS repository into a directory named "lammps_stable"
 git clone -b stable https://github.com/lammps/lammps.git lammps_stable
