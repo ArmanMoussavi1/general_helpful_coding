@@ -14,10 +14,8 @@ mkdir build && cd build/
 # Purge all loaded modules to avoid conflicts
 module purge
 
-# Load required modules for compiling LAMMPS
-# module load cmake/3.15.4 mpi/openmpi-4.1.1-gcc.10.2.0 gcc/11.2.0 hdf5/1.10.8-openmpi-3.1.3-gcc-8.4.0 
-
-module load gcc/10.4.0-gcc-4.8.5 hdf5/1.10.7-openmpi-intel-2021.4.0 git/2.37.2 intel-oneapi-mkl/2023.1.0-intel-2021.4.0 mpi/openmpi-4.1.6rc2-intel-2021.4.0 cmake/3.26.3-intel-2021.4.0 intel-oneapi-compilers/2021.4.0-gcc-10.4.0 ffmpeg/4.2.2-intel-19.0.5.281 fftw/3.3.4-openmpi-4.0.5-intel-19.0.5.281
+# Load required modules for compiling LAMMPS (make require newer versions of cmake)
+module load cmake/3.15.4 mpi/openmpi-4.1.1-gcc.10.2.0 gcc/11.2.0 hdf5/1.10.8-openmpi-3.1.3-gcc-8.4.0 
 
 # Run CMake to configure the LAMMPS build  
     # Edit package options below as needed to include/exclude specific features
