@@ -1,0 +1,2 @@
+Error: ║ UnpackFailed │ Error: UnpackFailed (Failed to install the VS Code Server)
+--> There is insufficient disk space in the remote machine's home directory. Free up space in the home directory to be able to install vs code server.
