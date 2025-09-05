@@ -48,7 +48,6 @@ cmake ../cmake \
   -D CMAKE_CXX_STANDARD=17 \
   -D BUILD_MPI=yes \
   -D PKG_X11=no     # disable GUI
-      ../cmake  # Specify the source directory for CMake configuration
 
 
 
