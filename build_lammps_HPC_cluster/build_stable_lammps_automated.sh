@@ -40,6 +40,18 @@ cmake -D CMAKE_C_COMPILER=$(which mpicc) \
       -D PKG_MANYBODY=yes \
       ../cmake  # Specify the source directory for CMake configuration
 
+
+# Simple Build
+cmake ../cmake \
+  -D CMAKE_C_COMPILER=$(which mpicc) \
+  -D CMAKE_CXX_COMPILER=$(which mpicxx) \
+  -D CMAKE_CXX_STANDARD=17 \
+  -D BUILD_MPI=yes \
+  -D PKG_X11=no     # disable GUI
+      ../cmake  # Specify the source directory for CMake configuration
+
+
+
 # Compile and install LAMMPS using 4 parallel threads
 make -j4 install
 
