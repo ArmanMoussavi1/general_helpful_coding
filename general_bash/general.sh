@@ -10,3 +10,7 @@ tar -czvf archive_name.tar.gz /path/to/your_directory/
 
 # List size of all directories in current directory
 du -hd1
+
+
+# Reload .bashrc
+source ~/.bashrc
