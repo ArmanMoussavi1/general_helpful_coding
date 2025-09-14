@@ -14,3 +14,27 @@ du -hd1
 
 # Reload .bashrc
 source ~/.bashrc
+
+
+# System clean-up
+## Clean unused packages across all envs
+conda clean --packages --yes
+
+## Clean all caches, tarballs, and logs
+conda clean --all --yes
+
+
+
+
+# Clean VScode
+# You can safely remove:
+#   Old bin/<commit_hash> folders except the one matching your current VS Code version.
+#   Unneeded extensions inside extensions/.
+#   Logs in data/logs/.
+# VS Code will automatically re-download what it needs when you reconnect.
+# Common cleanup:
+
+rm -rf ~/.vscode-server/bin/*
+rm -rf ~/.vscode-server/extensions/*
+
+
