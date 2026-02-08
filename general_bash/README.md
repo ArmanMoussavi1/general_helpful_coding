@@ -103,6 +103,12 @@ conda clean --packages --yes
 ```
 
 ### Clean All Conda Caches
+
+First — see what would be deleted and how much space you'd save
+```bash
+conda clean --all --dry-run
+```
+
 Remove all caches, tarballs, and logs from conda.
 ```bash
 conda clean --all --yes
