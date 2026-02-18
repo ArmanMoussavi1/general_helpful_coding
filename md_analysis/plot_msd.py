@@ -99,6 +99,9 @@ parser.add_argument('-f', '--file', type=str, default='msd_lj.dat',
                     help='Input data file (default: msd_lj.dat)')
 parser.add_argument('-c', '--components', type=str, nargs='+', 
                     help='MSD components to plot (e.g., x y z total). If not specified, all available components are plotted.')
+parser.add_argument('-r', '--references', type=str, nargs='+',
+                    choices=['sub', 'diff', 'super'],
+                    help='Reference lines to plot: sub (t^0.5), diff (t^1), super (t^1.5). Example: -r sub diff super')
 parser.add_argument('-o', '--output', type=str, default='msd_plot.png',
                     help='Output figure filename (default: msd_plot.png)')
 
@@ -135,6 +138,29 @@ plot_styles = {
 # Plot selected components
 for component in components_to_plot:
     plt.plot(time_steps, msd_data[component], **plot_styles[component])
+
+# Plot reference lines for diffusive regimes
+if args.references:
+    # Use the last data point to scale references appropriately
+    t_ref = time_steps[-1]
+    msd_ref = msd_data[components_to_plot[0]][-1]  # Use first component's last value for scaling
+    
+    reference_styles = {
+        'sub': {'power': 0.5, 'color': 'gray', 'linestyle': ':', 'linewidth': 1.5, 'label': 'Sub-diffusive (t$^{0.5}$)'},
+        'diff': {'power': 1.0, 'color': 'red', 'linestyle': '--', 'linewidth': 2, 'label': 'Diffusive (t$^{1}$)'},
+        'super': {'power': 1.5, 'color': 'blue', 'linestyle': '-.', 'linewidth': 1.5, 'label': 'Super-diffusive (t$^{1.5}$)'}
+    }
+    
+    for ref_type in args.references:
+        if ref_type in reference_styles:
+            style = reference_styles[ref_type]
+            power = style.pop('power')
+            
+            # Scale reference line to match data at reference point
+            # reference = (t/t_ref)^power * msd_ref
+            ref_data = (time_steps / t_ref) ** power * msd_ref
+            
+            plt.plot(time_steps, ref_data, **style)
 
 # Formatting
 plt.xlabel('Time (steps)', fontsize=12)
