@@ -1,6 +1,31 @@
-# Personal Website – Git Workflow
+# Personal Website – Git & Jekyll Workflow
 
-This guide explains how to commit and push your local website to GitHub.
+This guide explains how to run your site locally and push updates to GitHub.
+
+---
+
+## 0. Run the Site Locally (Jekyll)
+
+Before committing, preview your site locally:
+
+```bash
+bundle install
+bundle exec jekyll s
+```
+
+Then open:
+
+```
+http://localhost:4000
+```
+
+The site will automatically rebuild when you edit files.
+
+Stop the server with:
+
+```
+Ctrl + C
+```
 
 ---
 
@@ -78,16 +103,17 @@ git pull origin main --rebase --allow-unrelated-histories
 git push origin main
 ```
 
+Your GitHub Pages site will automatically update after a successful push to `main`.
+
 ---
 
 ## Quick Daily Workflow
 
 ```bash
+bundle exec jekyll s
 git status
 git add .
 git commit -m "update"
 git pull origin main --rebase
 git push origin main
 ```
-
-Your GitHub Pages site will automatically update after a successful push to `main`.
