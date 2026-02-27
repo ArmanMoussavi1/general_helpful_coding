@@ -112,7 +112,7 @@ Your GitHub Pages site will automatically update after a successful push to `mai
 ```bash
 bundle exec jekyll s
 git status
-git add .
+git add -A
 git commit -m "update"
-git push
+git push origin master
 ```
